@@ -9,11 +9,11 @@ Objective checklist tracking development. Check items off (`- [x]`) as completed
 - [x] `PLAN.md` created
 - [x] `PROGRESS.md` created
 - [x] Run `npx create-t3-app@latest` (scaffolded into `web/`)
-- [ ] Commit scaffolding to git
-- [ ] ESLint + Prettier configured and passing
+- [x] Commit scaffolding to git
+- [x] ESLint + Prettier configured and passing
 - [ ] Husky + lint-staged pre-commit hook
-- [ ] GitHub Actions workflow: lint + typecheck on PR
-- [ ] Connect repo to Vercel; first successful prod deploy
+- [x] GitHub Actions workflow: lint + typecheck on PR
+- [x] Connect repo to Vercel; first successful prod deploy
 - [ ] Connect managed Postgres (Neon or Supabase); `DATABASE_URL` set in Vercel env
 
 **Notes:**
