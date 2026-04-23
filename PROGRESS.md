@@ -8,7 +8,7 @@ Objective checklist tracking development. Check items off (`- [x]`) as completed
 
 - [x] `PLAN.md` created
 - [x] `PROGRESS.md` created
-- [ ] Run `npx create-t3-app@latest` (select: TypeScript, Tailwind, tRPC, Prisma, NextAuth, App Router)
+- [x] Run `npx create-t3-app@latest` (scaffolded into `web/`)
 - [ ] Commit scaffolding to git
 - [ ] ESLint + Prettier configured and passing
 - [ ] Husky + lint-staged pre-commit hook
