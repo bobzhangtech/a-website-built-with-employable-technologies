@@ -6,6 +6,8 @@
 
 Bob knows basic HTML/CSS/JS and wants to level up into a full-stack web developer using the most employable technologies in 2026. The project doubles as a portfolio piece: a humorous parody site framed as an over-the-top sales pitch, where each feature intentionally showcases a specific technology. Pacing is steady over ~3 months with a full DevOps pipeline.
 
+**The twist is meta.** The copy on each page openly names the technology powering what the visitor is currently interacting with, so the site doubles as its own argument for hiring Bob. "You're reading this server-rendered page, so I clearly know Next.js. You got rate-limited on the endorsements form, so I clearly know Redis." The site *is* the résumé — every feature the employer sees and touches is evidence, and the tone says so out loud.
+
 ## Chosen Stack (T3 + full pipeline)
 
 **Frontend**
