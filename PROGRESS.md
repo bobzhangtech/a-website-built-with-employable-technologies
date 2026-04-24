@@ -17,7 +17,22 @@ Objective checklist tracking development. Check items off (`- [x]`) as completed
 - [x] Connect managed Postgres (Neon); `DATABASE_URL` set in Vercel env
 
 **Notes:**
-- _(add learnings here)_
+
+_2026-04-23_
+
+**What clicked:**
+- **T3 stack scaffolding** — `create-t3-app` wires Next.js, TypeScript, Tailwind, tRPC, Prisma, and NextAuth together in a way that would take days to set up by hand. The app lives in `web/` so docs (PLAN, PROGRESS) stay at the repo root.
+- **CI as a safety net** — GitHub Actions runs `lint` + `typecheck` on every PR, using `working-directory: web` and caching `npm ci` via `web/package-lock.json`. First run failed because `next lint` imports `src/env.js`, which validates env vars at import time. Fix: set `SKIP_ENV_VALIDATION: "1"` at the job level in `ci.yml` — CI only needs lint/typecheck, not a real DB.
+- **Vercel deploy pipeline** — PRs get preview URLs, `main` pushes to prod. Set Root Directory to `web` so Vercel knows where the app is. The `.vercel.app` subdomain was auto-truncated; renamed the project in Settings → General to match the repo name.
+- **Neon Postgres** — serverless Postgres, scales to zero (free tier friendly for a dormant portfolio). Picked over Supabase because NextAuth handles auth and tRPC handles the API layer — Supabase's extras would be dead weight here. Region: `us-west-2` (Oregon) for lowest latency from Vancouver. `npm run db:push` applies the Prisma schema to the remote DB.
+- **`SKIP_ENV_VALIDATION` in Vercel was a mistake to keep** — originally added so the first deploy could succeed without `DATABASE_URL`. Once Neon was wired up, that var had to be deleted so future env var mistakes actually fail the build instead of silently slipping through.
+- **Husky + lint-staged** — `.husky/pre-commit` runs `cd web && npx lint-staged`, which runs ESLint + Prettier only on staged files. Because `.git` is at the repo root but `package.json` is in `web/`, husky's default `npx husky init` fails with ".git can't be found". Fix: `prepare` script does `cd .. && husky web/.husky || true` so git-root detection works when anyone clones + installs.
+- **Vercel rebuild noise** — by default Vercel rebuilds on *every* push to `main`, even doc-only changes. Fix: Settings → Build and Deployment → Root Directory → "Skip deployments when there are no changes to the root directory or its dependencies" toggle. Since docs live outside `web/`, they now skip the build pipeline.
+
+**Still fuzzy:**
+- The `@t3-oss/env-nextjs` validation flow — understand *why* it runs at import time, less sure *when* that matters in practice.
+- Prisma Client generation (`postinstall: prisma generate`) vs. migrations (`db:push` vs `db:migrate`) — push is fine for dev, but real projects use migrations. Will revisit in Phase 2.
+- How NextAuth's Discord provider placeholder in `.env` interacts with the session setup — haven't actually tried logging in yet.
 
 ---
 
