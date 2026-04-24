@@ -14,7 +14,7 @@ Objective checklist tracking development. Check items off (`- [x]`) as completed
 - [ ] Husky + lint-staged pre-commit hook
 - [x] GitHub Actions workflow: lint + typecheck on PR
 - [x] Connect repo to Vercel; first successful prod deploy
-- [ ] Connect managed Postgres (Neon or Supabase); `DATABASE_URL` set in Vercel env
+- [x] Connect managed Postgres (Neon); `DATABASE_URL` set in Vercel env
 
 **Notes:**
 - _(add learnings here)_
