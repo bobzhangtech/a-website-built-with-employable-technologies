@@ -90,8 +90,8 @@ Objective checklist tracking development. Check items off (`- [x]`) as completed
 
 ## Phase 1 — HTML/CSS/JS deepening (Weeks 2–3)
 
-- [ ] Static landing page with Tailwind (semantic HTML, responsive, no JS frameworks yet)
-- [ ] Refactor into React components (Hero, FeatureCard, Footer, Nav)
+- [x] Static landing page with Tailwind (semantic HTML, responsive, no JS frameworks yet)
+- [x] Refactor into React components (Hero, FeatureCard, Footer, Nav)
 - [ ] Add shadcn/ui and install first components (Button, Card, Dialog)
 - [ ] Set up Storybook; add stories for each custom component
 - [ ] Add Framer Motion entrance animations on landing page
